@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.development.config.js",
-    "start:dev": "npx webpack-dev-server --open"
+    "start:dev": "npx webpack-dev-server --config webpack.development.config.js --open"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1"
   }
 }
