@@ -21,16 +21,17 @@ export const splitMessageChunk = function (msg) {
     let [msgLengthForEachChunk, totalChunk] = msgLengthChunk(msg);
     const msgWithoutPartIndicator = [];
     let currentString = '';
+    let pivotChunk = msgLengthForEachChunk;
     for (let i = 0; i < msg.length; i++) {
         if (currentString.length === 0) {
             currentString += msg[i].trim();
         } else {
             currentString += msg[i];
         }
-        if (i > msgLengthForEachChunk) {
+        if (i > pivotChunk) {
             msgWithoutPartIndicator.push(currentString);
             currentString = '';
-            msgLengthForEachChunk *= 2;
+            pivotChunk += msgLengthForEachChunk;
         }
         if (i === msg.length - 1 && currentString.length > 0) {
             msgWithoutPartIndicator.push(currentString);
