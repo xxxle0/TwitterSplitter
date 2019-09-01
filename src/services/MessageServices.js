@@ -2,9 +2,10 @@ const MAX_LENGTH_CHUNK = 50;
 const LENGTH_OF_BACK_SLASH = 1;
 const LENGTH_OF_SPACE = 1;
 
-// calculate mess length chunk from 2 Inequation 
-// the first is: 
-// the second is: 
+// calculate mess length chunk from 2 Inequation
+// the first inequation is: n <= 10^i - 1
+// the second inequation is: 
+// with i is length of indicator
 const msgLengthChunk = function (msg) {
     const MAX_LENGTH_DATA_CHUNK = MAX_LENGTH_CHUNK - LENGTH_OF_BACK_SLASH - LENGTH_OF_SPACE;
     for (let i = 1; ;i++) {
