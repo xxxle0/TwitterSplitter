@@ -1,3 +1,4 @@
+// should apply TDD for this project but i have no time.
 import { maximumMsgLengthChunk, generateMsgChunkWithPartIndicator, attachPartIndicator, messageSplitter} from '../services/messageService';
 
 it('messagecalculate maximum message chunk', () => {
@@ -26,4 +27,9 @@ it('generate msg chunk with part indicator', () => {
 it('message spliter', () => {
     expect(messageSplitter("I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.")).toEqual(["1/2 I can't believe Tweeter now supports chunking","2/2 my messages, so I don't have to do it myself."]);
     expect(messageSplitter("I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.")).toEqual(["1/4 I can't believe Tweeter now supports chunking","2/4 my messages, so I don't have to do it myself.", "3/4 I can't believe Tweeter now supports chunking","4/4 my messages, so I don't have to do it myself."]);
+    expect(messageSplitter("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")).toEqual([]);
+    expect(messageSplitter("     ")).toEqual([]);
+    expect(messageSplitter("")).toEqual([]);
+    expect(messageSplitter(undefined)).toEqual([]);
+    expect(messageSplitter(null)).toEqual([]);
 })

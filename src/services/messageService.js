@@ -45,7 +45,7 @@ export const attachPartIndicator = function(msg, index, total) {
 
 export const messageSplitter = function (msg = '') {
     // check case msg undefined or " "
-    if (msg === undefined || msg.trim().length === 0) {
+    if (msg === undefined || msg=== null || msg.trim().length === 0) {
         return [];
     }
 
