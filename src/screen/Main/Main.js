@@ -1,6 +1,7 @@
 import React from 'react';
-import { messageSplitter } from '../../services/messageService';
+import { messageSplitter, generateMsgChunkwithoutPartIndicator } from '../../services/messageService';
 import { TIME_OUT_CONTANTS } from '../../contants'; 
+import Message from '../../components/Message';
 
 class Main extends React.Component {
 
@@ -10,7 +11,7 @@ class Main extends React.Component {
 
     handleChangeMessageInput = (e) => {
         e.preventDefault();
-        const messageChunk = messageSplitter(e.target.value);
+        const messageChunk = generateMsgChunkwithoutPartIndicator(e.target.value);
         if (this.timeOut) {
             clearTimeout(this.timeOut);
         };
@@ -28,12 +29,11 @@ class Main extends React.Component {
                 Your message input<input onChange={this.handleChangeMessageInput}></input>
             </div>
             <div className="Main__message-container">
-                
                 <div className="Main__message">
                     <ul>
                     {
-                        messageChunk.map((el,index) => {
-                            return <li key={index}>{el}</li>
+                        messageChunk.map((message, index) => {
+                            return <Message key={index} message={message}/>
                         })
                     }
                     </ul>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Badge } from 'antd';
+
 function Message(props) {
-    return <h1> <Badge count={25} />Message</h1>;
+    const { message } = props;
+    return <div><Badge count={25} />{message}</div>;
 }
 
 export default Message;

@@ -43,18 +43,7 @@ export const attachPartIndicator = function(msg, index, total) {
     return `${index+1}/${total} ${msg}`;
 }
 
-export const messageSplitter = function (msg = '') {
-    // check case msg undefined or " "
-    if (msg === undefined || msg=== null || msg.trim().length === 0) {
-        return [];
-    }
-
-    // if msg length is less than maximum chunk return [msg]
-    if (msg.length <= MAX_LENGTH_CHUNK) {
-        return [msg]; 
-    }
-
-    // calculate maximum length of each chunk
+export const generateMsgChunkwithoutPartIndicator = function(msg) {
     let msgLengthForEachChunk = maximumMsgLengthChunk(msg);
     const msgWithoutPartIndicator = [];
     let i = 0;
@@ -78,6 +67,21 @@ export const messageSplitter = function (msg = '') {
         }
         msgWithoutPartIndicator.push(msgChunk);
     }
+    return msgWithoutPartIndicator;
+}
+export const messageSplitter = function (msg = '') {
+    // check case msg undefined or " "
+    if (msg === undefined || msg=== null || msg.trim().length === 0) {
+        return [];
+    }
+
+    // if msg length is less than maximum chunk return [msg]
+    if (msg.length <= MAX_LENGTH_CHUNK) {
+        return [msg]; 
+    }
+
+    // calculate maximum length of each chunk
+    const msgWithoutPartIndicator = generateMsgChunkwithoutPartIndicator(msg);
 
     const msgWithPartIndicator = generateMsgChunkWithPartIndicator(msgWithoutPartIndicator);
 

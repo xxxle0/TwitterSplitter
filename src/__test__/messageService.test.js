@@ -1,5 +1,5 @@
 // should apply TDD for this project but i have no time.
-import { maximumMsgLengthChunk, generateMsgChunkWithPartIndicator, attachPartIndicator, messageSplitter} from '../services/messageService';
+import { maximumMsgLengthChunk, generateMsgChunkwithoutPartIndicator, generateMsgChunkWithPartIndicator, attachPartIndicator, messageSplitter, } from '../services/messageService';
 
 it('messagecalculate maximum message chunk', () => {
     expect(maximumMsgLengthChunk("I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.")).toEqual(46);
@@ -23,6 +23,11 @@ it('generate msg chunk with part indicator', () => {
 })
 
 
+it('generate msg chunk without part indicator', () => {
+    expect(generateMsgChunkwithoutPartIndicator("I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.")).toEqual(["I can't believe Tweeter now supports chunking","my messages, so I don't have to do it myself."]);
+    expect(generateMsgChunkwithoutPartIndicator("I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.")).toEqual(["I can't believe Tweeter now supports chunking","my messages, so I don't have to do it myself.", "I can't believe Tweeter now supports chunking","my messages, so I don't have to do it myself."]);
+    expect(generateMsgChunkwithoutPartIndicator("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")).toEqual([]);
+})
 
 it('message spliter', () => {
     expect(messageSplitter("I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.")).toEqual(["1/2 I can't believe Tweeter now supports chunking","2/2 my messages, so I don't have to do it myself."]);
