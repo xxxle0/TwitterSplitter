@@ -6,21 +6,43 @@ const LENGTH_OF_SPACE = 1;
 // the first inequation is: n <= 10^i - 1
 // the second inequation is: 
 // with i is length of indicator
-const msgLengthChunk = function (msg) {
-    const MAX_LENGTH_DATA_CHUNK = MAX_LENGTH_CHUNK - LENGTH_OF_BACK_SLASH - LENGTH_OF_SPACE;
-    for (let i = 1; ;i++) {
-        const msgLengthForEachChunk = MAX_LENGTH_DATA_CHUNK - 2 * i;
-        const maxNumberOfChunk = (10**i - 1);
-        const pivot = maxNumberOfChunk * msgLengthForEachChunk - msg.length;
-        if (pivot > 0) {
-            return msgLengthForEachChunk;
+export const maximumMsgLengthChunk = function (msg) {
+    if (typeof msg === "string" && msg.trim().length > 0) {
+        const MAX_LENGTH_DATA_CHUNK = MAX_LENGTH_CHUNK - LENGTH_OF_BACK_SLASH - LENGTH_OF_SPACE;
+        for (let i = 1; ;i++) {
+            const msgLengthForEachChunk = MAX_LENGTH_DATA_CHUNK - 2 * i;
+            const maxNumberOfChunk = (10**i - 1);
+            const pivot = maxNumberOfChunk * msgLengthForEachChunk - msg.length;
+            if (pivot > 0) {
+                return msgLengthForEachChunk;
+            }
         }
+    } else {
+        return 0;
     }
 }
 
-export const messageSplitter = function (msg) {
+
+
+// loop through list of chunk message without part indicator
+// and attach part indicator to it
+export const generateMsgChunkWithPartIndicator = function (msgChunkPartIndicator) {
+    const msgWithPartIndicator = [];
+    for (let i = 0; i < msgChunkPartIndicator.length; i++) {
+        msgWithPartIndicator[i] = attachPartIndicator(msgChunkPartIndicator[i], i, msgChunkPartIndicator.length);
+    }
+    return msgWithPartIndicator;
+}
+
+
+// attach part indicator to message chunk
+export const attachPartIndicator = function(msg, index, total) {
+    return `${index+1}/${total} ${msg}`;
+}
+
+export const messageSplitter = function (msg = '') {
     // check case msg undefined or " "
-    if (!msg || msg.trim().length === 0) {
+    if (msg === undefined || msg.trim().length === 0) {
         return [];
     }
 
@@ -30,7 +52,7 @@ export const messageSplitter = function (msg) {
     }
 
     // calculate maximum length of each chunk
-    let msgLengthForEachChunk = msgLengthChunk(msg);
+    let msgLengthForEachChunk = maximumMsgLengthChunk(msg);
     const msgWithoutPartIndicator = [];
     let i = 0;
     while (i < msg.length) {
@@ -59,19 +81,3 @@ export const messageSplitter = function (msg) {
     return msgWithPartIndicator;
 }
 
-
-// loop through list of chunk message without part indicator
-// and attach part indicator to it
-function generateMsgChunkWithPartIndicator(msgChunkPartIndicator) {
-    const msgWithPartIndicator = [];
-    for (let i = 0; i < msgChunkPartIndicator.length; i++) {
-        msgWithPartIndicator[i] = attachPartIndicator(msgChunkPartIndicator[i], i, msgChunkPartIndicator.length);
-    }
-    return msgWithPartIndicator;
-}
-
-
-// attach part indicator to message chunk
-function attachPartIndicator(msg, index, total) {
-    return `${index+1}/${total} ${msg}`;
-}
