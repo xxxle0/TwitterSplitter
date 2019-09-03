@@ -37,6 +37,9 @@ export const generateMsgChunkWithPartIndicator = function (msgChunkPartIndicator
 
 // attach part indicator to message chunk
 export const attachPartIndicator = function(msg, index, total) {
+    if (msg.length > 50) {
+        throw new Error('Your message too long');
+    }
     return `${index+1}/${total} ${msg}`;
 }
 

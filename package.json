@@ -4,7 +4,7 @@
   "description": "assignment project for gfg",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest",
+    "test": "npx jest --maxWorkers=4",
     "build": "webpack --config webpack.development.config.js",
     "start:dev": "npx webpack-dev-server --config webpack.development.config.js --open"
   },
