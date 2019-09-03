@@ -23,6 +23,7 @@ class Main extends React.Component {
     
     render() {
         const { messageChunk } = this.state;
+        const totalChunk = messageChunk.length;
         return (
         <div className="Main">
             <div className="Main__message-input">
@@ -33,7 +34,7 @@ class Main extends React.Component {
                     <ul>
                     {
                         messageChunk.map((message, index) => {
-                            return <Message key={index} message={message}/>
+                            return <Message key={index} partIndicator={`${index} / ${totalChunk}`} message={message}/>
                         })
                     }
                     </ul>
