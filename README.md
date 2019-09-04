@@ -14,7 +14,7 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 ## Project setup and execution
 
 ### Technology stack 
-  - **Frontend libraries** : ReactJs, Webpack, 
+  - **Frontend libraries** : ReactJs, Webpack, CSCC, Jest
 
 ### Project Structure
 ```
@@ -26,6 +26,8 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 │       ├── helpers/ # folder for utils, helper
 │       ├── screen/ # foder for save Main, ... screen
 │       ├── services/ # foder for save services like messaage split services
+│   ├── .babelrc
+│   ├── webpack.development.config.js
 │   ├── README.md
 
 ```
@@ -39,4 +41,4 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 
 
 ### Run test cases
-    - Run ``` npm run dev ``` to run test 
+Run ``` npm run dev ``` to run test 
