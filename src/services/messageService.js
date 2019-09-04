@@ -2,6 +2,8 @@ const MAX_LENGTH_CHUNK = 50;
 const LENGTH_OF_BACK_SLASH = 1;
 const LENGTH_OF_SPACE = 1;
 
+// DO ONE THING AND DO IT WELL
+
 // calculate mess length chunk from 2 Inequation
 // the first inequation is: n <= 10^i - 1
 // the second inequation is: 
