@@ -12,9 +12,9 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
     2/2 my messages, so I don't have to do it myself.
 
 ## Project setup and execution
-
+  
 ### Technology stack 
-  - **Frontend libraries** : ReactJs, Webpack, CSCC, Jest
+  - **Frontend libraries** : ReactJs, Webpack, CSCC, Jest, Webpack. 
 
 ### Project Structure
 ```
@@ -22,10 +22,10 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 │   ├── src/  # source code
 │       ├── __test__/ # test folder
 │       ├── components/ # components react folder
-│       ├── contants/ # folder save contant variables 
-│       ├── helpers/ # folder for utils, helper
-│       ├── screen/ # foder for save Main, ... screen
-│       ├── services/ # foder for save services like messaage split services
+│       ├── contants/ # folder contains contant variables 
+│       ├── helpers/ # folder contaín utilities, helpers 
+│       ├── screen/ # folder contains Main, another screen
+│       ├── services/ # folder contains services like message split services
 │   ├── .babelrc
 │   ├── webpack.development.config.js
 │   ├── README.md
@@ -37,7 +37,7 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 2. Git clone the repositroy
 3. Run ```npm install ``` to install the required dependencies
 4. Run ```npm run start:dev ```
-5. Open browser http://localhost:8080
+5. Open browser http://localhost:9000
 
 
 ### Run test cases

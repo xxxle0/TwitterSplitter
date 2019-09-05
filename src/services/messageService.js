@@ -6,7 +6,7 @@ const LENGTH_OF_SPACE = 1;
 
 // calculate mess length chunk from 2 Inequation
 // the first inequation is: n <= 10^i - 1
-// the second inequation is: 
+// the second inequation is: msg.length - n*(48 - 2i) < 0
 // with i is length of indicator
 export const maximumMsgLengthChunk = function (msg) {
     if (typeof msg === "string" && msg.trim().length > 0) {
@@ -24,8 +24,6 @@ export const maximumMsgLengthChunk = function (msg) {
     }
 }
 
-
-
 // loop through list of chunk message without part indicator
 // and attach part indicator to it
 export const generateMsgChunkWithPartIndicator = function (msgChunkPartIndicator) {
@@ -35,7 +33,6 @@ export const generateMsgChunkWithPartIndicator = function (msgChunkPartIndicator
     }
     return msgWithPartIndicator;
 }
-
 
 // attach part indicator to message chunk
 export const attachPartIndicator = function(msg, index, total) {
@@ -71,20 +68,20 @@ export const generateMsgChunkwithoutPartIndicator = function(msg) {
     }
     return msgWithoutPartIndicator;
 }
+
+// message splitter for the test
 export const messageSplitter = function (msg = '') {
     // check case msg undefined or " "
     if (msg === undefined || msg=== null || msg.trim().length === 0) {
         return [];
     }
-
     // if msg length is less than maximum chunk return [msg]
     if (msg.length <= MAX_LENGTH_CHUNK) {
         return [msg]; 
     }
-
-    // calculate maximum length of each chunk
+    // generate message chunk without attach part indicator
     const msgWithoutPartIndicator = generateMsgChunkwithoutPartIndicator(msg);
-
+    // generate message chunk attach part indicator
     const msgWithPartIndicator = generateMsgChunkWithPartIndicator(msgWithoutPartIndicator);
 
     return msgWithPartIndicator;
